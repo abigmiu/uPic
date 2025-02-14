@@ -25,13 +25,14 @@ jobs:
         run: |
           pod install  # 安装 CocoaPods 依赖
 
-      - name: Set up Swift Package Manager dependencies
-        run: |
-          swift package resolve  # 安装 SPM 依赖
-
       - name: Build the project
         run: |
-          xcodebuild -workspace uPic.xcworkspace -scheme uPic -configuration Release build  # 构建项目
+          xcodebuild clean build \
+            -workspace uPic.xcworkspace \
+            -scheme uPic \
+            -configuration Release \
+            CODE_SIGN_IDENTITY="" \
+            CODE_SIGNING_REQUIRED=NO
 
       - name: Archive the project
         run: |
