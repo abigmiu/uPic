@@ -31,9 +31,13 @@ jobs:
             -workspace uPic.xcworkspace \
             -scheme uPic \
             -configuration Release \
+            -derivedDataPath ./build \
             CODE_SIGN_IDENTITY="" \
             CODE_SIGNING_REQUIRED=NO
 
-      - name: Archive the project
-        run: |
-          xcodebuild -workspace uPic.xcworkspace -scheme uPic -configuration Release archive -archivePath $PWD/build/uPic.xcarchive  # 构建归档
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: uPic-build
+          path: |
+            ./build/Build/Products/Release/uPic.app
