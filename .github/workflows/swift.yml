@@ -34,10 +34,13 @@ jobs:
             -derivedDataPath ./build \
             CODE_SIGN_IDENTITY="" \
             CODE_SIGNING_REQUIRED=NO
+      - name: Zip app
+        run: |
+          zip uPic.zip ./build/Build/Products/Release/uPic.app
 
       - name: Upload build artifact
         uses: actions/upload-artifact@v4
         with:
-          name: uPic
+          name: uPic.zip
           path: |
-            ./build/Build/Products/Release
+            uPic.zip
