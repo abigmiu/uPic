@@ -30,13 +30,14 @@ jobs:
           xcodebuild clean build \
             -workspace uPic.xcworkspace \
             -scheme uPic \
+            -arch x86_64 -destination 'platform=macOS,arch=x86_64'
             -configuration Release \
             -derivedDataPath ./build \
             CODE_SIGN_IDENTITY="" \
             CODE_SIGNING_REQUIRED=NO
       - name: Zip app
         run: |
-          zip uPic.zip ./build/Build/Products/Release/uPic.app
+          zip -r uPic.zip ./build/Build/Products/Release/uPic.app
 
       - name: Upload build artifact
         uses: actions/upload-artifact@v4
