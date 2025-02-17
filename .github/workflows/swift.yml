@@ -37,7 +37,8 @@ jobs:
             CODE_SIGNING_REQUIRED=NO
       - name: Zip app
         run: |
-          zip -r uPic.zip ./build/Build/Products/Release/uPic.app
+          mv ./build/Build/Products/Release/uPic.app uPic.app
+          zip -r uPic uPic.app
 
       - name: Upload build artifact
         uses: actions/upload-artifact@v4
