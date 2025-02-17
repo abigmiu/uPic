@@ -30,7 +30,7 @@ jobs:
           xcodebuild clean build \
             -workspace uPic.xcworkspace \
             -scheme uPic \
-            -arch x86_64 -destination 'platform=macOS,arch=x86_64'
+            -destination 'platform=macOS,arch=x86_64' \
             -configuration Release \
             -derivedDataPath ./build \
             CODE_SIGN_IDENTITY="" \
